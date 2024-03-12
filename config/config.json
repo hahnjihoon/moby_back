@@ -1,0 +1,8 @@
+{
+  "mobyDb": {
+    "username": "admin",
+    "password": "ahql1234!",
+    "database": "moby_db",
+    "host": "moby-db-instance.cneyuwow0w4c.ap-northeast-2.rds.amazonaws.com"
+  }
+}
