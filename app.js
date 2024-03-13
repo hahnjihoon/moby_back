@@ -24,7 +24,11 @@ app.use(bodyParser.json());
 // app.use(cors());
 app.use(
   cors({
-    origin: ["http://192.168.0.137:3000", "http://localhost:3000"],
+    origin: [
+      "http://192.168.0.137:3000",
+      "http://localhost:3000",
+      "http://ec2-52-78-220-231.ap-northeast-2.compute.amazonaws.com/"
+    ],
     methods: "GET, POST, PUT, DELETE",
     credentials: true
   })
