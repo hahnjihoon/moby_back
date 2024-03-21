@@ -27,7 +27,8 @@ app.use(
     origin: [
       "http://192.168.0.137:3000",
       "http://localhost:3000",
-      "http://ec2-52-78-220-231.ap-northeast-2.compute.amazonaws.com/"
+      "http://ec2-52-78-220-231.ap-northeast-2.compute.amazonaws.com/",
+      "http://ec2-52-78-220-231.ap-northeast-2.compute.amazonaws.com:8000/"
     ],
     methods: "GET, POST, PUT, DELETE",
     credentials: true
@@ -60,5 +61,6 @@ app.listen(port, () => {
 //   res.status(err.status || 500);
 //   res.render("error");
 // });
+//연습용추가
 
 module.exports = app;
