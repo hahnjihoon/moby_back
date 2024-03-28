@@ -14,10 +14,17 @@ router.use(express.urlencoded({ extended: false }));
  */
 
 router.get("/", async (req, res) => {
-  console.log("들어왔냐");
-  try {
-    let result = await Products.findAll({});
+  const category = req.query.category; // 클라이언트로부터 받은 카테고리 정보
+  console.log("받은 카테고리:", category);
 
+  try {
+    let result = await Products.findAll({
+      where: {
+        minor_class: category // minor_class 컬럼이 클라이언트에서 받은 카테고리인 데이터 조회
+      }
+    });
+
+    console.log("result:", result);
     res.json(result);
   } catch (error) {
     console.log(error);
