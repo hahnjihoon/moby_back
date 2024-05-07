@@ -21,9 +21,10 @@ const sequelize = new Sequelize(database, username, password, {
 // 연결 DB를 저장할 객체 변수.
 const db = {};
 
-// ─────────── [ TSB(Trend Sensing Board) 정보 디비 ] ─────────── //
 const Products = require("./products")(sequelize, Sequelize.DataTypes);
+const Moby_users = require("./moby_users")(sequelize, Sequelize.DataTypes);
 
 db.Products = Products;
+db.Moby_users = Moby_users;
 
 module.exports = db;

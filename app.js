@@ -8,12 +8,15 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+const session = require("express-session");
 // var indexRouter = require("./routes/index"); //예시
 // var usersRouter = require("./routes/users"); //예시
 
 // app.set("views", path.join(__dirname, "views")); //템플릿파일루트(view)
 // app.set("view engine", "jade"); //템플릿파일루트(view)
 const Products = require("./routes/products.js");
+const Moby_users = require("./routes/moby_users.js");
+const Auth = require("./routes/auth.js");
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -22,6 +25,22 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
 // app.use(cors());
+app.use(
+  session({
+    secret: "@mobyback",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      domain: "localhost" || "192.168.0.137",
+      path: "/",
+      maxAge: 24 * 6 * 60 * 10000,
+      sameSite: "none",
+      httpOnly: true,
+      secure: true
+    }
+  })
+);
+
 app.use(
   cors({
     origin: [
@@ -36,6 +55,8 @@ app.use(
 );
 
 app.use("/products", Products);
+app.use("/moby_users", Moby_users);
+app.use("/auth", Auth);
 
 app.get("/", function (req, res) {
   res.send("moby_backend_server");
